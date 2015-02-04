@@ -30,3 +30,17 @@ describe 'Commands', ->
         ['simon', '@hubot jenkins list']
         ['hubot', test_data.expectedReturn()]
       ]
+
+  context 'user asks for one job', ->
+    test_data = require './one_job'
+    beforeEach ->
+      stub.init = -> {
+        job_info: (id ,cal) -> cal(null, test_data.stubData())
+      }
+      room.user.say 'simon', '@hubot jenkins job job1'
+
+    it 'hubot replies with the jobs', ->
+      expect(room.messages).to.eql [
+        ['simon', '@hubot jenkins job job1'],
+        ['hubot', test_data.expectedReturn()]
+      ]

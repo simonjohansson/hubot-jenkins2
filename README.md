@@ -1,4 +1,5 @@
 # hubot-jenkins2
+[![Build Status](https://travis-ci.org/simonjohansson/hubot-jenkins2.svg?branch=master)](https://travis-ci.org/simonjohansson/hubot-jenkins2)
 
 A hubot script to interact with jenkins
 

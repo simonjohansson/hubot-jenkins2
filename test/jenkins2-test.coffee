@@ -11,7 +11,6 @@ jenkins = require 'jenkins-api'
 
 describe 'Commands', ->
   room = null
-  request = require 'request'
   stub = sinon.stub(jenkins)
 
   beforeEach ->

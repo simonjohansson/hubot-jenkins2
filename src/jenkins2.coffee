@@ -15,8 +15,5 @@
 #   Simon Johansson[@<org>]
 
 module.exports = (robot) ->
-  robot.respond /hello/, (msg) ->
-    msg.reply "hello!"
-
-  robot.hear /orly/, ->
-    msg.send "yarly"
+  robot.respond /jenkins list/, (msg) ->
+    list(msg)

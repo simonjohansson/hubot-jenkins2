@@ -15,10 +15,3 @@ Then add **hubot-jenkins2** to your `external-scripts.json`:
 ```json
 ["hubot-jenkins2"]
 ```
-
-## Sample Interaction
-
-```
-user1>> hubot hello
-hubot>> hello!
-```

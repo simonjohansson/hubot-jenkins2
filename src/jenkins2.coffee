@@ -30,6 +30,24 @@ list = (msg) ->
     else
       msg.reply (data.map (job) -> "#{job.name} -> #{job.url}").join '\n'
 
+jobInfo = (msg) ->
+  job = msg.match[1]
+  jenkins = jenkinsapi.init("..")
+  jenkins.job_info job, (err, data) ->
+    if err
+      msg.reply formatError(err, data)
+    else
+      msg.reply """
+        #{data.url}
+        #{data.healthReport[0].description}
+        Last build: #{data.lastBuild.url}
+        Last completed build: #{data.lastCompletedBuild.url}
+        Last failed build: #{data.lastFailedBuild.url}
+      """
+
 module.exports = (robot) ->
   robot.respond /jenkins list/, (msg) ->
     list(msg)
+
+  robot.respond /jenkins job (.*)/i, (msg) ->
+    jobInfo(msg)

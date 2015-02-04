@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "coffee-script": "~1.6",
-    "hubot-test-helper": "0.0.3"
+    "hubot-test-helper": "0.0.3",
+    "jenkins-api": "^0.2.6"
   },
   "devDependencies": {
     "mocha": "*",

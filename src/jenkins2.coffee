@@ -43,17 +43,20 @@ list = (msg) ->
 jobInfo = (msg) ->
   jenkins = getClient()
   job = msg.match[1]
-  jenkins.job_info job, (err, data) ->
-    if err
-      msg.reply formatError(err, data)
-    else
-      msg.reply """
-        #{data.url}
-        #{data.healthReport[0].description}
-        Last build: #{data.lastBuild.url}
-        Last completed build: #{data.lastCompletedBuild.url}
-        Last failed build: #{data.lastFailedBuild.url}
-      """
+  if not job
+    msg.reply "Supply a job name yo!"
+  else
+    jenkins.job_info job, (err, data) ->
+      if err
+        msg.reply formatError(err, data)
+      else
+        msg.reply """
+          #{data.url}
+          #{data.healthReport[0].description}
+          Last build: #{data.lastBuild.url}
+          Last completed build: #{data.lastCompletedBuild.url}
+          Last failed build: #{data.lastFailedBuild.url}
+        """
 
 module.exports = (robot) ->
   robot.respond /jenkins list/, (msg) ->
